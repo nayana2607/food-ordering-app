@@ -1,0 +1,37 @@
+{
+  "name": "react-app",
+  "version": "1.0.0",
+  "description": "Starting with React prep",
+
+  "scripts": {
+    "test": "jest",
+    "start":"parcel index.html",
+    "build":"parcel build index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nayana2607/react-app.git"
+  },
+  "keywords": [
+    "react",
+    "basics-react"
+  ],
+  "author": "Nayana bhovi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nayana2607/react-app/issues"
+  },
+  "homepage": "https://github.com/nayana2607/react-app#readme",
+  "devDependencies": {
+    "parcel": "^2.9.3",
+    "process": "^0.11.10"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+
+  "browsersList":[
+    "last 2 Chrome Version"
+  ]
+}
