@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import RestaurantCard from "./RestaurantCard";
 import Shimmer from "./Shimmer";
 
+
 const Body = () => {
   useEffect(() => {
     fetchData();
@@ -21,7 +22,6 @@ const Body = () => {
       json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
     setisLoading((prevState) => (prevState.isLoading = false));
-    // setResData()
   };
 
   const [resList, setResData] = useState([]);
@@ -30,13 +30,12 @@ const Body = () => {
   const [filteredRes, setFilteredRes] = useState([]);
 
   const filterOnRatings = () => {
-    setFilteredRes(resList.filter((data) => data.info.avgRating >= 4.3)
-    );
+    setFilteredRes(resList.filter((data) => data.info.avgRating >= 4.3));
   };
 
-  const removefilter=()=>{
-    setFilteredRes(resList)
-  }
+  const removefilter = () => {
+    setFilteredRes(resList);
+  };
 
   const filterOnSearch = () => {
     setFilteredRes(
@@ -57,12 +56,10 @@ const Body = () => {
             onChange={(e) => setSearchText(e.target.value)}
             value={searchText}
           ></input>
-          <button onClick={()=>filterOnSearch()}>Search</button>
+          <button onClick={() => filterOnSearch()}>Search</button>
+          <button onClick={filterOnRatings}>Top Rated Restro</button>
+          <button onClick={removefilter}>Remove filter</button>
         </div>
-        <button onClick={filterOnRatings} className="filter-btn">
-          Top Rated Restro
-        </button>
-        <button onClick={removefilter}>Remove filter</button>
       </div>
       <div className="res-container">
         {filteredRes.map((data) => (

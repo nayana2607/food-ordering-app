@@ -44,5 +44,9 @@
 
 # React Hooks
 Utility functions
-- useState() = Superpowerful React variables
+- useState() = 
 - useEffect() = 
+
+# Routing in web apps
+- Type 1: Client Side Routing: Internal handling of a route inside of your JS
+- Type 2: Server side Routing: Reuesting new page from server and poviding to user evry time a link is clicked
