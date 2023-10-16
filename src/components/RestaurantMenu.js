@@ -1,53 +1,52 @@
-import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
-import { URLS } from "../utils/constants";
+
 import { useParams } from "react-router-dom";
 import useRestaurantMenu from "../utils/useRestaurantMenu";
+import RestaurantCategories from "./RestaurantCategories";
+import { useState } from "react";
 
 const RestaurantMenu = () => {
-  // const [isLoading, setisLoading] = useState(true);
   const { resId } = useParams();
+  const [showItems, setShowItems] = useState(0);
 
-  const resInfo = useRestaurantMenu(resId);
-  if (resInfo === null) return <Shimmer />;
   //custom hooks
+  const resInfo = useRestaurantMenu(resId);
+
+  if (resInfo === null) return <Shimmer />;
 
   const resData = resInfo?.data?.cards[0]?.card?.card?.info;
-  const menuData =
-    resInfo?.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR.cards[1]?.card
-      ?.card?.carousel;
-  // setisLoading(false)
+  const categories =
+    resInfo?.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR.cards.filter(
+      (card) => card?.card?.card?.["@type"].includes("ItemCategory")
+    );
 
   const { name, avgRating, cuisines } = resData;
   return (
-    <div>
-      <h2>{name}</h2>⭐{avgRating}
-      <div className="p-5">
-        <b>cuisines:</b>
-        <p> {cuisines.join(",")}</p>
+    <div className="text-center">
+      <div className="flex justify-center text-2xl">
+        <h1 className="font-bold  my-4 mx-4">{name}</h1>
+        <p className=" my-4 mx-4 ">⭐{avgRating}</p>
       </div>
-      <h3 className="p-5">Menu</h3>
-     
-        <ul className="p-5">
-          <div className="flex ">
-            {menuData?.map((menu) => (
-              <li className="font-bold" key={menu.dish.info.imageId}>
-                <div className="flex flex-wrap">
-                  <img
-                    className="rounded-md w-52  border-4 border-black-800 hover:outline-dashed"
-                    src={URLS.CDN_URL + menu.dish.info.imageId}
-                  />
-                  <div className="py-4 w-52 text-left">
-                    {menu.dish.info.name}-{" "}
-                    {(menu.dish.info.defaultPrice ?? menu.dish.info.price) /
-                      100}
-                  </div>
-                </div>
-              </li>
-            ))}
-          </div>
-        </ul>
- 
+      <div className="p-5">
+        <p className="font-bold text-lg">Cuisines:</p>
+        <p className="font-italic text-slate-900 text-md">
+          {" "}
+          {cuisines.join(",")}
+        </p>
+      </div>
+
+      {categories.map((item, index) => (
+        <RestaurantCategories
+          key={item?.card?.card.title}
+          details={item?.card?.card}
+          show={index === showItems ? true : false}
+          setShowItems={() =>
+            setShowItems((prevShowItems) =>
+              prevShowItems === index ? -1 : index
+            )
+          }
+        />
+      ))}
     </div>
   );
 };
