@@ -3,12 +3,15 @@ import { URLS } from "../utils/constants";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import UserContext from "../utils/UserContext";
+import { useSelector } from "react-redux";
 
 const Header = () => {
   const onlineStatus = useOnlineStatus();
-  const {loggedInUser,setUserName} = useContext(UserContext);
+  const { loggedInUser, setUserName } = useContext(UserContext);
 
-  
+  //Subscribing to store using selector
+  const cartItems = useSelector((store) => store.cart.items);
+
   const handleClick = () => {
     setUserName(buttonLabel === "Logout" ? "" : loggedInUser);
     setButtonLabel(
@@ -51,7 +54,9 @@ const Header = () => {
           <li className="px-4">
             <Link to="/contact-us">Contact Us</Link>
           </li>
-          <li className="px-4">Cart</li>
+          <li className="px-4 font-bold">
+            <Link to="/cart">🛒 Cart ({cartItems.length} items)</Link>
+          </li>
           <li className="px-4">
             <button className={className} onClick={handleClick}>
               {buttonLabel}
