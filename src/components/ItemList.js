@@ -15,6 +15,7 @@ const ItemList = ({ items, showAddButton }) => {
       {items.map((item, index) => (
         <div
           key={index}
+          data-testid="foodItems"
           className="p-2 m-2 border-gray-200 border-b-2 text-left flex justify-between"
         >
           <div className="w-9/12">

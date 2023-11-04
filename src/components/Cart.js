@@ -1,4 +1,4 @@
-import { useSelector } from "react-redux/es/hooks/useSelector";
+import { useSelector } from 'react-redux'
 import ItemList from "./ItemList";
 import { clearItems } from "../utils/cartSlice";
 import { useDispatch } from "react-redux";
@@ -12,6 +12,7 @@ const Cart = () => {
   return (
     <div className="text-center m-10 p-10">
       <h1 className="font-bold">Your cart</h1>
+      
       <button
         className="p-2 m-2 bg-red-400 border border-black rounded-md shadow-lg  to-black"
         onClick={handleClick}

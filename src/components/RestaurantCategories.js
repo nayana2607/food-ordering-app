@@ -2,7 +2,7 @@
 import ItemList from "./ItemList";
 
 const RestaurantCategories = ({ details, show, setShowItems }) => {
-  handleClick = () => {
+  const handleClick = () => {
     setShowItems();
   };
   return (

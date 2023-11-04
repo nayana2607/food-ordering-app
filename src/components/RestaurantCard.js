@@ -3,10 +3,11 @@ import { Link } from "react-router-dom";
 
 const RestaurantCard = (props) => {
   const { resData } = props;
+
   const { name, cuisines, avgRating, sla } = resData?.info;
   return (
     <Link to={"/restaurants/" + resData?.info?.id}>
-      <div className="rounded-lg m-4 p-4 w-[250px] h-43 bg-violet-200 shadow-md hover:bg-violet-400 hover:border-dashed border-2 hover:border-black">
+      <div data-testid="resCard" className="rounded-lg m-4 p-4 w-[250px] h-43 bg-violet-200 shadow-md hover:bg-violet-400 hover:border-dashed border-2 hover:border-black">
         <img
           className="rounded-md w-25"
           alt="res-logo"

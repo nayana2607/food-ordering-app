@@ -61,3 +61,17 @@ https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/
  - Create Slice
  - Dispatch action
  - Selector
+
+
+ # Testing
+
+ - Install React testing Library
+ - Installed Jest
+ - Installed Babel depenedemncies
+ - Configure Babel
+ - configure parcel config file to disable default bable transpilation.
+ - jest configuration using npx jest --init
+ - Install jsdom library
+ - Install @babel/preset-react - to make JSX work in test cases
+ - Include @babel/preset-react inside my babelconfig
+ - Install @testing-library/jest-dom

@@ -7,7 +7,7 @@ import { useState } from "react";
 
 const RestaurantMenu = () => {
   const { resId } = useParams();
-  const [showItems, setShowItems] = useState(0);
+  const [showItems, setShowItems] = useState(null);
 
   //custom hooks
   const resInfo = useRestaurantMenu(resId);
